@@ -4,9 +4,9 @@
 
 void selection_sort(int *A, int num_elements){
     int j, x;
-    for(int i=1; i<num_elements-1; ++i){
+    for(int i=1; i<num_elements; ++i){
+        x = A[i];
         j = i;
-        x = A[j];
         while(j > 0 && x < A[j-1]){
             A[j] = A[j-1];
             --j;
