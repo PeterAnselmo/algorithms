@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define ARRAY_SIZE 100
+
 //read in space-separated array of numbers from STDIN
 void populate_array(int *A, int *num_elements, int size){
     int num;

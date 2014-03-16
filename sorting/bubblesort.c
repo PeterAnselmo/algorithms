@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "utils.h"
-#define ARRAY_SIZE 100
 
 void bubble_sort(int *A, int num_elements){
     int tmp;
