@@ -1,0 +1,52 @@
+" Press ? for help             |  1 prim: prim.c
+                               |  2     gcc -Wall --std=c99 -o prim prim.c
+.. (up a dir)                  |  3 bfs: bfs.cpp utils.h
+<rams/github/algorithms/graphs/|  4     g++ -Wall --std=c++0x -o bfs bfs.cpp utils.h
+  bfs*                         |~
+  bfs.cpp                      |~
+  data.txt                     |~
+  makefile                     |~
+  non_weighted_data.txt        |~
+  prim*                        |~
+  prim.c                       |~
+  utils.h                      |~
+~                              |~
+~                              |~
+~                              |~
+~                              |~
+~                              |~
+~                              |~
+~                              |~
+~                              |~
+~                              |~
+~                              |~
+~                              |~
+~                              |~
+~                              |~
+~                              |~
+~                              |~
+~                              |~
+~                              |~
+~                              |~
+~                              |~
+~                              |~
+~                              |~
+~                              |~
+~                              |~
+~                              |~
+~                              |~
+~                              |~
+~                              |~
+~                              |~
+~                              |~
+~                              |~
+~                              |~
+~                              |~
+~                              |~
+~                              |~
+~                              |~
+~                              |~
+~                              |~
+~                              |~
+<grams/github/algorithms/graphs makefile                                                                                                                           4,37-40        All
+"makefile" 4L, 116C written
