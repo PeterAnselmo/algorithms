@@ -13,6 +13,7 @@ $ cat data/002.A-100.txt | ./selection_sort > 100-sorted.txt
 $ cat data/003.A-200.txt | ./insertion_sort  
 
 $ cd graphs  
-$ make bfs  
+$ make  
 $ cat non_weighted_data.txt | ./bfs  
+$ cat data.txt | ./kruskal  
 
