@@ -17,4 +17,5 @@ $ cd graphs
 $ make  
 $ cat non_weighted_data.txt | ./bfs  
 $ cat data.txt | ./kruskal  
+$ cat data.txt | ./bellman_ford  
 
