@@ -1,51 +1,43 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <limits.h>
+#include "utils.h"
 
-#define MATRIX_SIZE 10
+using namespace std;
 
-//reads STDIN for 3 elements per line:
-//vertex1, vertex2, path_weigth (space separated)
-//used them to populate an adjacency matrix
-void populate_matrix(int **M, int *num_elements){
-    for(int i=0; i<MATRIX_SIZE; ++i){
-        M[i] = malloc(MATRIX_SIZE * sizeof(int));
-        if(M[i] == NULL){
-            printf("Mem Allocation Error.\n");
-            exit(1);
-        }
-        for(int j=0; j<MATRIX_SIZE; ++j){
-            M[i][j] = 0;
-        }
+void prim(list<vertex*> &V, vector<edge> &E, list<vertex> &MST, vertex *r){
+    for(const auto &u : V){
+        u->parent = 0;
     }
 
-    int v1, v2, weight;
-    while(scanf("%d %d %d", &v1, &v2, &weight) == 3){
-        if(v1 > *num_elements){
-            *num_elements = v1;
-        }
-        if(v2 > *num_elements){
-            *num_elements = v2;
-        }
-        M[v1][v2] = weight;
-        M[v2][v1] = weight;
-    }
-}
+    MST.push_back(r);
+    while(MST.size() < V.size()){
+        edge lowest;
+        for(const auto &u : MST){
+            for(const auto &v : u.adj){
 
-void print_matrix(int **M, const int num_elements){
-    for(int i=0; i<=num_elements; ++i){
-        for(int j=0; j<=num_elements; ++j){
-            printf("%d ", M[i][j]);
-        }
-        printf("\n");
-    }
+        
+
+
+
+
+
 }
 
 int main(){
-    int **M = malloc(MATRIX_SIZE * sizeof(int*));
-    int num_elements = 9;
+    list<vertex*> V;
+    vector<edge> E;
+    list<vertex*> MST;
 
-    populate_matrix(M, &num_elements);
+    populate_adj_list_w_edges(V, E);
 
-    print_matrix(M, num_elements);
+    vertex *r = V.front();
+    V.pop_front();
+    prim(V, E, MST, r);
+
+    print_adj_list(V);
+
+    //print_matrix(M, num_elements);
 
 }

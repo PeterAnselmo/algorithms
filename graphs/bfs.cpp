@@ -5,10 +5,6 @@
 #include <set>
 #include "utils.h"
 
-#define WHITE 0
-#define GREY 1
-#define BLACK 2
-
 using namespace std;
 
 //G is list of vertices
@@ -31,7 +27,8 @@ void bfs(list<vertex*> &G, vertex *s){
         vertex *u = Q.front();
         Q.pop_front();
 
-        for(auto &v : u->adj){
+        for(auto &av : u->adj){
+            vertex *v = av.v; //vertex pointed to by adjace vertex object
             if(v->color == 'w'){
                 v->color = 'g';
                 if((u->dist + 1) < v->dist){

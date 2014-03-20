@@ -12,13 +12,29 @@
 
 using namespace std;
 
+class vertex;
+
+class adj_vertex{
+public:
+    vertex* v;
+    int weight;
+    adj_vertex(vertex* new_v){
+        v = new_v;
+    }
+    adj_vertex(vertex* new_v, int new_w){
+        v = new_v;
+        weight = new_w;
+    }
+};
+
 class vertex {
 public:
     int index;
-    char color;
-    int dist;
-    int parent;
-    set<vertex*> adj;
+    char color; //used in bfs
+    int dist; //used in bfs & bellman ford
+    int key; //used in prim
+    int parent; //used in bfs & bellman ford
+    list<adj_vertex> adj;
 
     vertex(int new_index){
         index = new_index;
@@ -38,6 +54,12 @@ public:
         weight = new_weight;
     }
 };
+struct ReverseMaxByWeight{
+    bool operator()(const edge &lhs, const edge &rhs){
+        return lhs.weight > rhs.weight;
+    }
+};
+
 
 
 //ie. a "forest" of "trees"
@@ -126,8 +148,8 @@ void populate_adj_list(list<vertex*> &G){
             G.push_back(vertex2);
         }
 
-        vertex1->adj.insert(vertex2);
-        vertex2->adj.insert(vertex1);
+        vertex1->adj.push_back(adj_vertex(vertex2));
+        vertex2->adj.push_back(adj_vertex(vertex1));
     }
 }
 
@@ -165,19 +187,19 @@ void populate_adj_list_w_edges(list<vertex*> &V, vector<edge> &E){
             V.push_back(vertex2);
         }
 
-        vertex1->adj.insert(vertex2);
-        vertex2->adj.insert(vertex1);
+        vertex1->adj.push_back(adj_vertex(vertex2, weight));
+        vertex2->adj.push_back(adj_vertex(vertex1, weight));
 
         edge uv(vertex1, vertex2, weight);
         E.push_back(uv);
     }
 }
 
-void print_adj_list(list<vertex*> G){
-    for(const auto &v : G){
-        printf("Vertex %d| color:%c, distance:%d, parent:%d, adj:", v->index, v->color, v->dist, v->parent);
-        for(const auto &u : v->adj){
-            printf("%d,", u->index);
+void print_adj_list(list<vertex*> V){
+    for(const auto &u : V){
+        printf("Vertex %d | distance:%d, parent:%d, adj:", u->index, u->dist, u->parent);
+        for(const auto &v : u->adj){
+            printf("%d,", v.v->index);
         }
         printf("\n");
     }
@@ -188,7 +210,7 @@ void print_edges(vector<edge> E){
         printf("(%d %d) %d\n", uv.u->index, uv.v->index, uv.weight);
     }
 }
-
+/*
 //reads STDIN for 3 elements per line:
 //vertex1, vertex2, path_weigth (space separated)
 //used them to populate an adjacency matrix
@@ -225,6 +247,6 @@ void print_matrix(int **M, const int num_elements){
         printf("\n");
     }
 }
-
+*/
 
 #endif
