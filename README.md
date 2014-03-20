@@ -11,6 +11,7 @@ $ make
 $ echo "3 5 1 2 4 9 7 9 3" | ./bubblesort  
 $ cat data/002.A-100.txt | ./selection_sort > 100-sorted.txt  
 $ cat data/003.A-200.txt | ./insertion_sort  
+$ cat data/004.A-300.txt | ./merge_sort  
 
 $ cd graphs  
 $ make  
